@@ -19,14 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     public Test test;
     Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,20 +62,23 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void btnClick(View view)
     {
-        TextView TextViewMain = (TextView) findViewById(R.id.TextViewMain);
+        test = new Test();
+
+        TextView TextViewMain = findViewById(R.id.TextViewMain);
         test.text = "http://it-school.com.ua";
         TextViewMain.setText(test.text);
         test.number = 123456;
 
 
-        ContextCompat.getColor(this, R.color.red);
-
         button = findViewById(R.id.button);
         button.setText(R.string.newButtonText);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            button.setTextColor(R.color.red);
-        }
+       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+       {
+           button.setTextColor(getColor(R.color.colorAccent));
+       }
+
+       button.setTextColor(ContextCompat.getColor(this, R.color.red));
 
 
     }
