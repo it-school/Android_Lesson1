@@ -1,5 +1,6 @@
 package com.example.vencedor.test;
 
+import android.annotation.SuppressLint;
 import android.app.LauncherActivity;
 import android.os.Build;
 import android.os.Bundle;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("ResourceAsColor")
     public void btnClick(View view)
     {
         TextView TextViewMain = (TextView) findViewById(R.id.TextViewMain);
@@ -64,13 +66,16 @@ public class MainActivity extends AppCompatActivity {
         TextViewMain.setText(test.text);
         test.number = 123456;
 
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                getColor(R.color.red);
-            }
 
         ContextCompat.getColor(this, R.color.red);
 
         button = findViewById(R.id.button);
         button.setText(R.string.newButtonText);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            button.setTextColor(R.color.red);
+        }
+
+
     }
 }
